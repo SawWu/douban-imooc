@@ -2,7 +2,8 @@
   <div class="container">
     <ul class="list">
       <li v-for="(card, index) in list" :key="index" class="item">
-        {{card.value}}
+        <div></div>
+        <span v-text="card.value"></span>
       </li>
     </ul>
   </div>
@@ -60,7 +61,19 @@
     float: left;
     width: 335rpx;
     text-align: center;
-    margin:10rpx 20rpx;
-    overflow: hidden;
+    margin: 10rpx 20rpx;
+    //overflow: hidden;
+
+    & > div {
+      width: 100%;
+      height: 550rpx;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    & > span {
+      display: inline-block;
+      width: 100%;
+      font: 12px/1.5 "微润雅黑"
+    }
   }
 </style>

@@ -7,10 +7,10 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"miniprogramRoot": "dist/wx",
+	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
 	"appid": "wx3b24b19bbd63dc65",
-	"projectname": "mpvue-protal",
+	"projectname": "douban-imooc",
 	"condition": {
 		"search": {
 			"current": -1,
