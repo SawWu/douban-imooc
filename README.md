@@ -1,6 +1,6 @@
 # mpvue-protal
 
-> A Mpvue project
+> 电影预告介绍
 
 ## Build Setup
 
