@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <ul class="list">
-      <li v-for="(card, index) in list" :key="index" class="item">
-        <div></div>
-        <span v-text="card.value"></span>
+      <li v-for="(item, index) in list" :key="index" class="item">
+        <img :src="item.cover" />
+        <span v-text="item.title+'/'+item.rate"></span>
       </li>
     </ul>
   </div>
@@ -12,42 +12,31 @@
 <script>
   export default {
     data: () => ({
-      list: [
-        {
-          value: '标题 8.9'
-        },
-        {
-          value: '标题 8.9'
-        },
-        {
-          value: '标题 8.9'
-        },
-        {
-          value: '标题 8.9'
-        }
-      ]
+      list: []
     }),
     methods: {
       bindViewTap () {
         const url = '../logs/main'
         wx.navigateTo({url})
       },
-      getUserInfo () {
-        // 调用登录接口
-        wx.login({
-          success: () => {
-
-          }
-        })
-      },
       clickHandle (msg, ev) {
         console.log('clickHandle:', msg, ev)
       }
     },
-
+    onLoad () {
+      let that = this
+      wx.request({
+        url: `https://www.koocv.com/h5-view/v/movie/list`,
+        header: {
+          'content-type': 'application/json'
+        },
+        success (res) {
+          that.list = res.data.subjects
+        }
+      })
+    },
     created () {
-      // 调用应用实例的方法获取全局数据
-      this.getUserInfo()
+
     }
   }
 </script>
@@ -62,9 +51,10 @@
     width: 335rpx;
     text-align: center;
     margin: 10rpx 20rpx;
+    vertical-align: top;
     //overflow: hidden;
 
-    & > div {
+    & > img {
       width: 100%;
       height: 550rpx;
       box-shadow: 0 0 10px #ccc;
